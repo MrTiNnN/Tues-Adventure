@@ -7,17 +7,20 @@
   /* --main: #833312; */
 
   --main-shade-8: #2b1d09;
+  --main-shade-6: #573a11;
   --main-shade-3: #98661e;
   --main-shade-1: #c38327;
   --main: #d9912b;
+  --main-tint-3: #e4b26b;
   --main-tint-5: #ecc895;
+  --main-tint-7: #f4debf;
 
   /* --main: #e9b47c;
   --main-tint-5: #f4dabe; */
 }
 
 html {
-  background-color: var(--main-tint-5);
+  /* background-color: var(--main-tint-5); */
   font-size: 62.5%;
 }
 
