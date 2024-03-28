@@ -1,7 +1,10 @@
 :root {
-  --main: #833312;
+  /* --main: #833312; */
+
+  --main: #d9912b;
+  --main-tint-5: #ecc895;
 }
 
 html {
-  background-color: var(--main);
+  background-color: var(--main-tint-5);
 }
