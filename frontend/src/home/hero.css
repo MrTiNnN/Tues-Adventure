@@ -11,16 +11,50 @@
     /* background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('../img/sunrise.jpg'); */
     background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/sunrise.jpg');
     background-size: cover;
+    padding: 12.8rem 0 9.6rem 0;
 }
 
 .container-hero {
-    padding-top: 2.4rem;
+    /* padding-top: 2.4rem; */
 }
 
 .hero-text-box {
-    background-color: aqua;
+    /* background-color: aqua; */
+    color: white;
     width: 75%;
     margin: 0 auto;
-    font-size: 6.4rem;
     text-align: center;
+}
+
+.hero-title {
+    margin-bottom: .2rem;
+}
+
+.hero-text {
+    font-size: 2.4rem;
+    line-height: 1.8;
+    margin-bottom: 6.4rem;
+}
+
+.hero-cta {
+    /* background-color: aqua; */
+    width: 75%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 75fr 25fr;
+}
+
+.hero-cta button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.hero-cta input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    padding-left: 1.6rem;
+    font-size: 1.6rem;
+    font-family: inherit;
 }

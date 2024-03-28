@@ -1,8 +1,19 @@
+@font-face {
+  font-family: adventure;
+  src: url('./fonts/murecho.ttf');
+}
+
 :root {
   /* --main: #833312; */
 
+  --main-shade-8: #2b1d09;
+  --main-shade-3: #98661e;
+  --main-shade-1: #c38327;
   --main: #d9912b;
   --main-tint-5: #ecc895;
+
+  /* --main: #e9b47c;
+  --main-tint-5: #f4dabe; */
 }
 
 html {
@@ -14,7 +25,11 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: adventure, sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
 
 
@@ -52,4 +67,30 @@ html {
 
   margin-left: auto;
   margin-right: auto;
+}
+
+.heading-primary {
+  font-size: 8.6rem;
+  font-weight: 800;
+}
+
+.btn {
+  background-color: var(--main);
+  color: var(--main-shade-8);
+  font-size: 1.6rem;
+  font-family: inherit;
+  letter-spacing: 1.6px;
+  font-weight: 900;
+  border: none;
+  padding: 1.6rem 3.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+
+  transition: .2s;
+}
+
+.btn:hover {
+  box-shadow: inset 0 0 0 0.2rem var(--main);
+  background-color: transparent;
+  color: var(--main);
 }
