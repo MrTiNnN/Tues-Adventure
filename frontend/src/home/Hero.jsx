@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import './hero.css'
+import { useContext } from 'react'
+import { DataContext } from '../../context/DataContext'
 
 const Hero = () => {
+    const { ctaEmail, setCtaEmail } = useContext(DataContext)
 
     return (
         <section className="section section-hero">
@@ -20,6 +23,8 @@ const Hero = () => {
                         <input 
                             type="text"
                             placeholder='martin.v.velchev.2022@elsys-bg.org'
+                            value={ctaEmail}
+                            onChange={(e) => setCtaEmail(e.target.value)}
                         />
                         <Link to='/register' className='btn'>Запиши се</Link>
                     </div>

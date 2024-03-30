@@ -1,13 +1,16 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from 'axios'
+import { DataContext } from "../../context/DataContext"
 
 const Register = () => {
-    const [email, setEmail] = useState('')
+    const { ctaEmail, setCtaEmail } = useContext(DataContext)
     const [firstName, setFirstName] = useState('')
     const [classNumber, setClassNumber] = useState(8)
     const [classLetter, setClassLetter] = useState('a')
     const [lastName, setLastName] = useState('')
     const [password, setPassword] = useState('')
+
+    const { navigate } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,7 +25,7 @@ const Register = () => {
 
         const obj = {
             id,
-            email,
+            email: ctaEmail,
             firstName,
             lastName,
             class: `${classNumber}${classLetter}`,
@@ -33,10 +36,12 @@ const Register = () => {
             const response = await axios.post('http://localhost:8000/accounts', obj)
             
             console.log(response)
+
+            if(response.status == 201) navigate('/login')
         } catch(err) {
             console.log(err)
         } finally {
-            setEmail('')
+            setCtaEmail('')
             setFirstName('')
             setLastName('')
             setClassNumber(8)
@@ -50,8 +55,8 @@ const Register = () => {
             <input 
                 type="email" 
                 placeholder="Elsys Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={ctaEmail}
+                onChange={(e) => setCtaEmail(e.target.value)}
             />
 
             <input 

@@ -1,9 +1,12 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { DataContext } from "../../context/DataContext"
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const { navigate } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -15,7 +18,10 @@ const Login = () => {
         if(responseGet.data.length) foundAcc = responseGet.data.find(account => account.email === email)
 
         if(foundAcc) {
-            if(password === foundAcc.password) console.log('login successful')
+            if(password === foundAcc.password) {
+                console.log('login successful')
+                navigate('/')
+            }
             else console.log('wrong password')
         }
         else console.log('didnt find it')

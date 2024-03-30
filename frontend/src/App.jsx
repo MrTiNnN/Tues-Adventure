@@ -12,8 +12,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <>
-      <DataProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <DataProvider>
           <Routes>
             <Route path='/' element={<Hero />} />
             
@@ -24,8 +24,8 @@ function App() {
           {/* <img src={img1} alt="" />
           <img src={img2} alt="" />
           <img src={img3} alt="" /> */}
-        </BrowserRouter>
-      </DataProvider>
+        </DataProvider>
+      </BrowserRouter>
     </>
   )
 }

@@ -14,10 +14,6 @@
     padding: 12.8rem 0 9.6rem 0;
 }
 
-.container-hero {
-    /* padding-top: 2.4rem; */
-}
-
 .hero-text-box {
     /* background-color: aqua; */
     color: white;
@@ -68,8 +64,11 @@
     backdrop-filter: blur(5px);
 }
 
-.hero-cta input::placeholder,
 .hero-cta input {
     /* color: var(--main-tint-7); */
     color: white;
+}
+
+.hero-cta input::placeholder {
+    color: rgb(143, 143, 143);
 }
