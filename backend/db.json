@@ -1,5 +1,20 @@
 {
-    "accounts": [
-        
-    ]
+  "accounts": [
+    {
+      "id": 1,
+      "email": "martin.v.velchev.2022@elsys-bg.org",
+      "firstName": "Мартин",
+      "lastName": "Велчев",
+      "class": "9v",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "email": "alexandar.h.haralampiev.2022@elsys-bg.org",
+      "firstName": "Александър",
+      "lastName": "Харалампиев",
+      "class": "10b",
+      "password": "123"
+    }
+  ]
 }

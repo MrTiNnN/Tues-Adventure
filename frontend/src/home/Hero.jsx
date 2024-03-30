@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './hero.css'
 
 const Hero = () => {
@@ -20,7 +21,7 @@ const Hero = () => {
                             type="text"
                             placeholder='martin.v.velchev.2022@elsys-bg.org'
                         />
-                        <button className='btn'>Запиши се</button>
+                        <Link to='/register' className='btn'>Запиши се</Link>
                     </div>
 
                 </div>

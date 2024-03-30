@@ -1,3 +1,5 @@
+import Login from './account/Login'
+import Register from './account/Register'
 import Hero from './home/Hero'
 import img1 from './img/1.jpg'
 import img2 from './img/2.jpg'
@@ -11,12 +13,15 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Hero/>}/>
+          <Route path='/' element={<Hero />} />
+          
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
 
-        <img src={img1} alt="" />
+        {/* <img src={img1} alt="" />
         <img src={img2} alt="" />
-        <img src={img3} alt="" />
+        <img src={img3} alt="" /> */}
       </BrowserRouter>
     </>
   )
