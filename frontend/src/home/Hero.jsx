@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 import './hero.css'
 
 const Hero = () => {
+
     return (
         <section className="section section-hero">
             
             <div className="container container-hero">
                 <div className="hero-text-box">
-
                     <h1 className='heading-primary hero-title'>Adventure Club Tues</h1>
 
                     <p className="hero-text">

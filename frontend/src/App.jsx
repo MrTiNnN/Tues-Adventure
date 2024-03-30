@@ -1,3 +1,4 @@
+import DataProvider from '../context/DataContext'
 import Login from './account/Login'
 import Register from './account/Register'
 import Hero from './home/Hero'
@@ -11,18 +12,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Hero />} />
-          
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
+      <DataProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Hero />} />
+            
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+          </Routes>
 
-        {/* <img src={img1} alt="" />
-        <img src={img2} alt="" />
-        <img src={img3} alt="" /> */}
-      </BrowserRouter>
+          {/* <img src={img1} alt="" />
+          <img src={img2} alt="" />
+          <img src={img3} alt="" /> */}
+        </BrowserRouter>
+      </DataProvider>
     </>
   )
 }
