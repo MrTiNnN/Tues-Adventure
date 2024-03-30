@@ -1,4 +1,5 @@
 import DataProvider from '../context/DataContext'
+import Nav from './Header/Nav'
 import Login from './account/Login'
 import Register from './account/Register'
 import Hero from './home/Hero'
@@ -14,6 +15,8 @@ function App() {
     <>
       <BrowserRouter>
         <DataProvider>
+          <Nav />
+
           <Routes>
             <Route path='/' element={<Hero />} />
             
