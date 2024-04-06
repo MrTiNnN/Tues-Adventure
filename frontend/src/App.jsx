@@ -2,7 +2,7 @@ import DataProvider from '../context/DataContext'
 import Nav from './Header/Nav'
 import Login from './account/Login'
 import Register from './account/Register'
-import Hero from './home/Hero'
+import Home from './home/Home'
 import img1 from './img/1.jpg'
 import img2 from './img/2.jpg'
 import img3 from './img/3.jpg'
@@ -18,7 +18,7 @@ function App() {
           <Nav />
 
           <Routes>
-            <Route path='/' element={<Hero />} />
+            <Route path='/' element={<Home />} />
             
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />

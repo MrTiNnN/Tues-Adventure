@@ -5,7 +5,29 @@
     top: 0;
     left: 0;
     /* background-color: aqua; */
+    color: white;
     padding: 3.2rem 6.4rem;
     display: flex;
     justify-content: space-between;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 3.2rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+    font-family: inherit;
+    text-decoration: none;
+    color: inherit;
+    font-size: 2rem;
+
+    transition: .2s;
+}
+
+.nav-link:active,
+.nav-link:hover {
+    color: var(--main-tint-5);
 }

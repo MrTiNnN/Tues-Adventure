@@ -6,13 +6,16 @@ export const DataContext = createContext({})
 const DataProvider = ({ children }) => {
     const navigate = useNavigate()
 
+    const [acc, setAcc] = useState(JSON.parse(sessionStorage.getItem('acc')) || null)
+
     const [ctaEmail, setCtaEmail] = useState('')
 
     return (
         <DataContext.Provider
             value={{
                 navigate,
-                ctaEmail, setCtaEmail
+                ctaEmail, setCtaEmail,
+                acc, setAcc
             }}
         >
             {children}

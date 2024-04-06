@@ -1,0 +1,25 @@
+.section-tues {
+    background-color: var(--main-tint-5);
+    padding: 9.6rem 3.2rem 9.6rem 3.2rem;
+}
+
+.tues-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3.2rem;
+    align-items: center;
+}
+
+.tues-heading {
+    margin-bottom: 1.8rem;
+}
+
+.tues-text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.tues-statistics {
+    list-style: none;
+}

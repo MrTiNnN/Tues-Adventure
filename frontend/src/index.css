@@ -7,6 +7,7 @@
   /* --main: #833312; */
 
   --main-shade-8: #2b1d09;
+  --main-shade-7: #412b0d;
   --main-shade-6: #573a11;
   --main-shade-3: #98661e;
   --main-shade-1: #c38327;
@@ -34,6 +35,10 @@ html {
 
 *:focus {
   outline: none;
+}
+
+body {
+  color: var(--main-shade-7);
 }
 
 
@@ -76,6 +81,11 @@ html {
 .heading-primary {
   font-size: 8.6rem;
   font-weight: 800;
+}
+
+.heading-secondary {
+  font-size: 5.2rem;
+  color: var(--main-shade-8);
 }
 
 .btn,

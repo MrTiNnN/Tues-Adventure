@@ -1,12 +1,13 @@
 import axios from "axios"
 import { useContext, useState } from "react"
 import { DataContext } from "../../context/DataContext"
+import './account.css'
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { navigate } = useContext(DataContext)
+    const { navigate, setAcc } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -20,6 +21,8 @@ const Login = () => {
         if(foundAcc) {
             if(password === foundAcc.password) {
                 console.log('login successful')
+                sessionStorage.setItem('acc', foundAcc.id)
+                setAcc(foundAcc.id)
                 navigate('/')
             }
             else console.log('wrong password')
@@ -28,7 +31,7 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} className="account-form">
             <input 
                 type="email" 
                 placeholder="Elsys Email"
