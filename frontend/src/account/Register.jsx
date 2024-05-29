@@ -19,7 +19,7 @@ const Register = () => {
 
         const responseGet = await axios.get('http://localhost:8000/accounts')
 
-        if(responseGet.data.length) id = responseGet.data[responseGet.data.length - 1].id + 1
+        if(responseGet.data.length) id = JSON.parse(responseGet.data[responseGet.data.length - 1].id) + 1
 
         console.log(id)
 
