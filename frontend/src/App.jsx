@@ -15,7 +15,7 @@ function App() {
     <>
       <BrowserRouter>
         <DataProvider>
-          {/* <Nav /> */}
+          <Nav />
 
           <Routes>
             <Route path='/' element={<Home />} />

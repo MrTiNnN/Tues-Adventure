@@ -51,7 +51,7 @@ const Register = () => {
     }
     
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} className="account-form">
             <input 
                 type="email" 
                 placeholder="Elsys Email"
