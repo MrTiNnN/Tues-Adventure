@@ -13,7 +13,7 @@ def registration(request):
     # Checking for empty values
     for key, value in request.data.items():
         if value == '' or value == None:
-            return Response('Please fill out all of the required fields.', status=401)
+            return Response('Please fill out all of the required fields.', status=400)
         
 
     # Getting the values from the request
@@ -26,9 +26,14 @@ def registration(request):
     confirmPassword = request.data['confirmPassword']
 
 
+    # Checking if user already exists
+    if User.objects.filter(email=email).exists():
+        return Response('A user with this email already exists.', status=400)
+
+
     # Checking if passwords match
     if password != confirmPassword:
-        return Response("Passwords don't match.", status=401)
+        return Response("Passwords don't match.", status=400)
 
 
     # Hashing the password
