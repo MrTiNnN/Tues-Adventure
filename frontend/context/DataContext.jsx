@@ -6,7 +6,7 @@ export const DataContext = createContext({})
 const DataProvider = ({ children }) => {
     const navigate = useNavigate()
 
-    const [acc, setAcc] = useState(JSON.parse(sessionStorage.getItem('acc')) || null)
+    const [acc, setAcc] = useState(JSON.parse(localStorage.getItem('acc')) || null)
 
     const [ctaEmail, setCtaEmail] = useState('')
 

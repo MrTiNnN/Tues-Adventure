@@ -8,7 +8,7 @@ const Nav = () => {
 
     const handleLogout = () => {
         setAcc(null)
-        sessionStorage.removeItem('acc')
+        localStorage.removeItem('acc')
     }
 
     return (

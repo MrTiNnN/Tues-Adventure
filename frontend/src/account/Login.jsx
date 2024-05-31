@@ -12,22 +12,24 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const responseGet = await axios.get(`http://localhost:8000/accounts`)
+        const obj = {
+            email,
+            password
+        }
 
-        let foundAcc
+        try {
+            const response = await axios.post(`http://localhost:8000/authentication/authentication/`, obj)
 
-        if(responseGet.data.length) foundAcc = responseGet.data.find(account => account.email === email)
+            console.log(response)
 
-        if(foundAcc) {
-            if(password === foundAcc.password) {
-                console.log('login successful')
-                sessionStorage.setItem('acc', foundAcc.id)
-                setAcc(foundAcc.id)
+            if(response.status == 200) {
+                setAcc(response.data.user.id)
+                localStorage.setItem('acc', response.data.user.id)
                 navigate('/')
             }
-            else console.log('wrong password')
+        } catch(err) {
+            console.log(err)
         }
-        else console.log('didnt find it')
     }
 
     return (
