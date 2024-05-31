@@ -16,14 +16,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // let id = 1
-
-        // const responseGet = await axios.get('http://localhost:8000/accounts')
-
-        // if(responseGet.data.length) id = JSON.parse(responseGet.data[responseGet.data.length - 1].id) + 1
-
-        // console.log(id)
-
         const obj = {
             email: ctaEmail,
             firstName,
@@ -41,16 +33,17 @@ const Register = () => {
             
             console.log(response)
 
-            // if(response.status == 201) {
-            //     setCtaEmail('')
-            //     setFirstName('')
-            //     setLastName('')
-            //     setClassNumber(8)
-            //     setClassLetter('a')
-            //     setPassword('')
-            //     setConfirmPassword('')
-            //     // navigate('/login')
-            // }
+            if(response.status == 201) {
+                setCtaEmail('')
+                setFirstName('')
+                setLastName('')
+                setClassNumber(8)
+                setClassLetter('a')
+                setPassword('')
+                setConfirmPassword('')
+                
+                navigate('/login')
+            }
         } catch(err) {
             console.log(err)
         }
