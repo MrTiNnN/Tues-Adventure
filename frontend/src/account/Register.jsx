@@ -9,44 +9,50 @@ const Register = () => {
     const [classLetter, setClassLetter] = useState('a')
     const [lastName, setLastName] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const { navigate } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        let id = 1
+        // let id = 1
 
-        const responseGet = await axios.get('http://localhost:8000/accounts')
+        // const responseGet = await axios.get('http://localhost:8000/accounts')
 
-        if(responseGet.data.length) id = JSON.parse(responseGet.data[responseGet.data.length - 1].id) + 1
+        // if(responseGet.data.length) id = JSON.parse(responseGet.data[responseGet.data.length - 1].id) + 1
 
-        console.log(id)
+        // console.log(id)
 
         const obj = {
-            id,
             email: ctaEmail,
             firstName,
             lastName,
-            class: `${classNumber}${classLetter}`,
-            password
+            classNumber,
+            classLetter,
+            password,
+            confirmPassword
         }
 
+        console.log(obj)
+
         try {
-            const response = await axios.post('http://localhost:8000/accounts', obj)
+            const response = await axios.post('http://localhost:8000/authentication/registration/', obj)
             
             console.log(response)
 
-            if(response.status == 201) navigate('/login')
+            // if(response.status == 201) {
+            //     setCtaEmail('')
+            //     setFirstName('')
+            //     setLastName('')
+            //     setClassNumber(8)
+            //     setClassLetter('a')
+            //     setPassword('')
+            //     setConfirmPassword('')
+            //     // navigate('/login')
+            // }
         } catch(err) {
             console.log(err)
-        } finally {
-            setCtaEmail('')
-            setFirstName('')
-            setLastName('')
-            setClassNumber(8)
-            setClassLetter('a')
-            setPassword('')
         }
     }
     
@@ -99,6 +105,13 @@ const Register = () => {
                 placeholder="Парола"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <input 
+                type="password" 
+                placeholder="Потвърди Парола"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
             />
 
             <button type="submit" className="btn">Регистрация</button>
