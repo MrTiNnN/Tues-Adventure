@@ -1,5 +1,4 @@
 import { useContext, useState } from "react"
-import axios from 'axios'
 import { DataContext } from "../../context/DataContext"
 
 const Register = () => {
@@ -11,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const { navigate } = useContext(DataContext)
+    const { navigate, crud } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,24 +27,18 @@ const Register = () => {
 
         console.log(obj)
 
-        try {
-            const response = await axios.post('http://localhost:8000/authentication/registration/', obj)
-            
-            console.log(response)
+        const response = await crud({
+            url: '/authentication/registration/',
+            method: 'post',
+            body: obj
+        })
+        
+        console.log(response)
 
-            if(response.status == 201) {
-                // setCtaEmail('')
-                // setFirstName('')
-                // setLastName('')
-                // setClassNumber(8)
-                // setClassLetter('a')
-                // setPassword('')
-                // setConfirmPassword('')
-                
-                // navigate('/login')
-            }
-        } catch(err) {
-            console.log(err)
+        if(response.status == 201) {
+            setCtaEmail('')
+            
+            navigate('/login')
         }
     }
     

@@ -1,10 +1,12 @@
-import axios from "axios"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { DataContext } from "../../context/DataContext"
 
 const Verification = () => {
     const id = useParams().id
     const token = useParams().token
+
+    const { crud } = useContext(DataContext)
 
     useEffect(() => {
         const fetching = async () => {
@@ -13,7 +15,11 @@ const Verification = () => {
                 token
             }
 
-            const response = await axios.patch('http://127.0.0.1:8000/authentication/verification/', obj)
+            const response = await crud({
+                url: '/authentication/verification/',
+                method: 'patch',
+                body: obj
+            })
 
             console.log(response)
         }

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useContext, useState } from "react"
 import { DataContext } from "../../context/DataContext"
 import './account.css'
@@ -7,7 +6,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { navigate, setAcc } = useContext(DataContext)
+    const { navigate, setAcc, crud } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -17,18 +16,18 @@ const Login = () => {
             password
         }
 
-        try {
-            const response = await axios.post(`http://localhost:8000/authentication/authentication/`, obj)
+        const response = await crud({
+            url: '/authentication/authentication/',
+            method: 'post',
+            body: obj
+        })
 
-            console.log(response)
+        console.log(response)
 
-            if(response.status == 200) {
-                setAcc(response.data.user.id)
-                localStorage.setItem('acc', response.data.user.id)
-                navigate('/')
-            }
-        } catch(err) {
-            console.log(err)
+        if(response.status == 200) {
+            setAcc(response.data.user.id)
+            localStorage.setItem('acc', response.data.user.id)
+            navigate('/')
         }
     }
 
