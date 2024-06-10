@@ -9,6 +9,7 @@ import img3 from './img/3.jpg'
 // pavelpronin.com
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Verification from './pages/account/Verification'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/' element={<Home />} />
             
             <Route path='/register' element={<Register />} />
+            <Route path='/activate/:id/:token' element={<Verification />} />
             <Route path='/login' element={<Login />} />
           </Routes>
 

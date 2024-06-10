@@ -6,8 +6,8 @@ from .models import User
 
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
-from django.utils.http import urlsafe_base64_encode
-from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 
 # Create your views here.
 
@@ -81,6 +81,32 @@ def registration(request):
 
 
     return Response('User created successfully.', status=201)
+
+
+
+
+
+# Verifying account
+@api_view(['PATCH'])
+def verification(request):
+    try:
+        id = force_str(urlsafe_base64_decode(request.data['id']))
+        user = User.objects.get(id=id)
+    except:
+        return Response("Couldn't find the user you're trying to verify.", status=400)
+    
+    try:
+        token = request.data['token']
+        if account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+        else:
+            return Response('Please enter a valid token.', status=400)
+    except:
+        return Response("Couldn't verify user.", status=400)
+
+
+    return Response('Verification successfull! Now you can login to your account.', status=200)
 
 
 
