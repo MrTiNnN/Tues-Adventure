@@ -41,6 +41,11 @@ def registration(request):
         confirmPassword = request.data['confirmPassword']
     except:
         return Response('Please fill out all of the required fields.', status=400)
+    
+
+    # Checking if the email is an elsys email
+    if not email.endswith('@elsys-bg.org'):
+        return Response('Please enter a valid elsys email address.', status=400)
 
 
     # Checking if user already exists
