@@ -1,5 +1,5 @@
 import DataProvider from '../context/DataContext'
-import Nav from './Header/Nav'
+import Nav from './header/Nav'
 import Login from './account/Login'
 import Register from './account/Register'
 import Home from './home/Home'

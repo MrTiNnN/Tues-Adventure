@@ -23,6 +23,7 @@
 html {
   /* background-color: var(--main-tint-5); */
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 * {

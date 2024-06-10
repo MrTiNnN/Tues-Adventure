@@ -3,7 +3,7 @@ import { FaHourglass } from 'react-icons/fa6'
 
 const AboutTues = () => {
     return (
-        <section className="section-tues">
+        <section className="section-tues" id='about-tues'>
             <div className="container tues-container">
                 <div className="tues-text-box">
                     <h2 className="heading-secondary tues-heading">За ТУЕС</h2>
