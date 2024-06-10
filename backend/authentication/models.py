@@ -4,6 +4,7 @@ from django.db import models
 
 class User(models.Model):
     email = models.EmailField(max_length=200, null=False, unique=True)
+    is_active = models.BooleanField(default=False)
     firstName = models.CharField(max_length=200, null=False)
     lastName = models.CharField(max_length=200, null=False)
     grade = models.IntegerField(null=False)

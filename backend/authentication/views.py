@@ -4,7 +4,21 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
 
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+
 # Create your views here.
+
+# Sending a confirmation email
+def activateAccount(user, to_email):
+    mail_subject = "TUES Adventure Verification"
+    message = f'Please activate your account: http://localhost:5173/activate/{urlsafe_base64_encode(force_bytes(user.pk))}/{account_activation_token.make_token(user)}'
+    email = EmailMessage(mail_subject, message, to=[to_email])
+
+    email.send()
+
 
 # Registering accounts
 @api_view(['POST'])
@@ -45,7 +59,7 @@ def registration(request):
 
     # Creating the database object
     try:
-        User.objects.create(
+        user = User(
             email = email,
             firstName = firstName,
             lastName = lastName,
@@ -53,8 +67,17 @@ def registration(request):
             className = classLetter,
             password = hashed_password
         )
+
+        user.save()
     except:
         return Response('Error saving the user.', status=400)
+    
+    
+    try:
+        activateAccount(user, email)
+    except:
+        return Response('Please enter a valid elsys email address.', status=400)
+
 
 
     return Response('User created successfully.', status=201)

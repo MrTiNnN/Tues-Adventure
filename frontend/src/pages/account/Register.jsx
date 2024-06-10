@@ -34,15 +34,15 @@ const Register = () => {
             console.log(response)
 
             if(response.status == 201) {
-                setCtaEmail('')
-                setFirstName('')
-                setLastName('')
-                setClassNumber(8)
-                setClassLetter('a')
-                setPassword('')
-                setConfirmPassword('')
+                // setCtaEmail('')
+                // setFirstName('')
+                // setLastName('')
+                // setClassNumber(8)
+                // setClassLetter('a')
+                // setPassword('')
+                // setConfirmPassword('')
                 
-                navigate('/login')
+                // navigate('/login')
             }
         } catch(err) {
             console.log(err)
