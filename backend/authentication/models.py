@@ -10,3 +10,5 @@ class User(models.Model):
     grade = models.IntegerField(null=False)
     className = models.CharField(max_length=1, null=False)
     password = models.CharField(max_length=200, unique=True)
+    role = models.CharField(max_length=1, default=0)
+    # 0 - student; 1 - teacher; 2 - admin
