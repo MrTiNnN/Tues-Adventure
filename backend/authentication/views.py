@@ -50,7 +50,12 @@ def registration(request):
 
     # Checking if user already exists
     if User.objects.filter(email=email).exists():
-        return Response('A user with this email already exists.', status=400)
+        user = User.objects.get(email = email)
+        if user.is_active == True:
+            return Response('A user with this email already exists.', status=400)
+        else:
+            user.delete()
+
 
 
     # Checking if passwords match
