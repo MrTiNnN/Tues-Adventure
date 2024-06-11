@@ -143,6 +143,8 @@ def authentication(request):
     # Checking if the user exists
     try:
         user = User.objects.get(email=email)
+        if user.is_active == False:
+            raise Exception()
 
         # Checking if the password is correct
         if check_password(password, user.password):
