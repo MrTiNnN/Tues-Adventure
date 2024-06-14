@@ -12,9 +12,15 @@
   --main-shade-3: #98661e;
   --main-shade-1: #c38327;
   --main: #d9912b;
+  --main-tint-2: #e1a755;
   --main-tint-3: #e4b26b;
   --main-tint-5: #ecc895;
   --main-tint-7: #f4debf;
+
+  --bg: #13151c;
+  --bg-tint-2: #424449;
+  --bg-tint-4: #717377;
+  --bg-tint-6: #a1a1a4;
 
   /* --main: #e9b47c;
   --main-tint-5: #f4dabe; */
@@ -36,10 +42,6 @@ html {
 
 *:focus {
   outline: none;
-}
-
-body {
-  color: var(--main-shade-7);
 }
 
 
@@ -70,6 +72,7 @@ body {
 
 .section {
   min-height: 100vh;
+  background-color: var(--bg);
 }
 
 .container {
@@ -86,7 +89,7 @@ body {
 
 .heading-secondary {
   font-size: 5.2rem;
-  color: var(--main-shade-8);
+  /* color: var(--main-shade-8); */
 }
 
 .btn,

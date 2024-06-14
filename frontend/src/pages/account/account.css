@@ -1,3 +1,115 @@
-.account-form {
-    padding-top: 12.8rem;
+/* SECTION */
+.account-section {
+    display: grid;
+    grid-template-columns: 1fr 1.75fr;
 }
+
+.account-img {
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url('../../img/lake.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: end;
+}
+
+.account-wave {
+    height: 100vh;
+    position: fixed;
+}
+
+.account-container {
+    padding: 8.4rem 12.8rem 6.4rem 3.6rem;
+}
+
+
+
+/* TEXT */
+.account-textbox {
+    margin-bottom: 1.6rem;
+}
+
+.account-textbox.login {
+    margin-top: 12.8rem;
+}
+
+.account-heading {
+    color: rgb(225, 225, 225);
+    text-align: center;
+    font-size: 4rem;
+}
+
+.account-text {
+    color: rgb(200, 200, 200);
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.account-text span {
+    color: var(--main);
+}
+
+.account-text.error {
+    color: red;
+    font-style: italic;
+}
+
+
+/* FORM */
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.account-input,
+.account-select {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px var(--bg-tint-2);
+    padding: 0.8rem 1.6rem;
+    transition: .2s;
+    color: rgb(225, 225, 225);
+}
+
+.account-input:focus,
+.account-select:focus {
+    border-bottom: solid 1px var(--main);
+    color: var(--main-tint-3);
+    position: relative;
+}
+
+.account-input:focus::placeholder {
+    color: var(--main-tint-7);
+}
+
+.account-select {
+    cursor: pointer;
+}
+
+.account-select option {
+    color: var(--bg);
+}
+
+.account-btn {
+    background-color: var(--main);
+    border: none;
+    font-family: inherit;
+    border-radius: 5px;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    margin-top: 1.6rem;
+    transition: .2s;
+}
+
+.account-btn:hover,
+.account-btn:active {
+    background-color: var(--main-tint-2);
+}
+
+/* .account-input::after {
+    background-color: var(--bg-tint-4);
+    content: "hillo";
+    height: 2px;
+    position: absolute;
+    color: aqua;
+    display: block;
+} */

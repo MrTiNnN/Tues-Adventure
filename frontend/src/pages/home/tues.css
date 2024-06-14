@@ -1,6 +1,8 @@
 .section-tues {
-    background-color: var(--main-tint-5);
+    /* background-color: var(--main-tint-5); */
+    background-color: #13151c;
     padding: 9.6rem 3.2rem 9.6rem 3.2rem;
+    color: white;
 }
 
 .tues-container {

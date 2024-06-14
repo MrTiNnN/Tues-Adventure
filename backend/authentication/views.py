@@ -27,7 +27,7 @@ def registration(request):
     # Checking for empty values
     for key, value in request.data.items():
         if value == '' or value == None:
-            return Response('Please fill out all of the required fields.', status=400)
+            return Response('Моля попълнете всички полета.', status=400)
         
 
     # Getting the values from the request
@@ -40,19 +40,19 @@ def registration(request):
         password = request.data['password']
         confirmPassword = request.data['confirmPassword']
     except:
-        return Response('Please fill out all of the required fields.', status=400)
+        return Response('Моля попълнете всички полета.', status=400)
     
 
     # Checking if the email is an elsys email
     if not email.endswith('@elsys-bg.org'):
-        return Response('Please enter a valid elsys email address.', status=400)
+        return Response('Въведете истински elsys имейл.', status=400)
 
 
     # Checking if user already exists
     if User.objects.filter(email=email).exists():
         user = User.objects.get(email = email)
         if user.is_active == True:
-            return Response('A user with this email already exists.', status=400)
+            return Response('Потребител с този имейл вече съществува.', status=400)
         else:
             user.delete()
 
@@ -60,7 +60,7 @@ def registration(request):
 
     # Checking if passwords match
     if password != confirmPassword:
-        return Response("Passwords don't match.", status=400)
+        return Response("Паролите не съвпадат.", status=400)
 
 
     # Hashing the password
@@ -80,17 +80,17 @@ def registration(request):
 
         user.save()
     except:
-        return Response('Error saving the user.', status=400)
+        return Response('Грешка при запазването на акаунта. Опитайте отново.', status=400)
     
     
     try:
         activateAccount(user, email)
     except:
-        return Response('Please enter a valid elsys email address.', status=400)
+        return Response('Въведете истински elsys имейл.', status=400)
 
 
 
-    return Response('User created successfully.', status=201)
+    return Response('Регистрирахте се успешно.', status=201)
 
 
 
@@ -129,7 +129,7 @@ def authentication(request):
     # Checking for empty values
     for key, value in request.data.items():
         if value == '' or value == None:
-            return Response(f'The {key} field is required.', status=400)
+            return Response(f'Полето {key} е задължително.', status=400)
         
 
     # Getting the values from the request
@@ -137,7 +137,7 @@ def authentication(request):
         email = request.data['email']
         password = request.data['password']
     except:
-        return Response('Please fill out all of the required fields.', status=400)
+        return Response('Моля попълнете всички полета.', status=400)
 
 
     # Checking if the user exists
@@ -148,9 +148,9 @@ def authentication(request):
 
         # Checking if the password is correct
         if check_password(password, user.password):
-            return Response({'data': 'Login successfull.', 'user': {'id': user.id}}, status=200)
+            return Response({'data': 'Успешно влизане.', 'user': {'id': user.id}}, status=200)
         else:
-            return Response('Wrong password.', status=400)
+            return Response('Грешна парола.', status=400)
 
     except:
-        return Response('There is not a user with this email.', status=404)
+        return Response('Не съществува акаунт с този имейл.', status=404)
