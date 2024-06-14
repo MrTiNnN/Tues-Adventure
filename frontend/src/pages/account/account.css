@@ -14,11 +14,13 @@
 .account-wave {
     height: 100vh;
     position: fixed;
+    margin-right: -0.2rem;
 }
 
 .account-container {
     padding: 8.4rem 12.8rem 6.4rem 3.6rem;
 }
+
 
 
 
@@ -51,6 +53,8 @@
     color: red;
     font-style: italic;
 }
+
+
 
 
 /* FORM */
@@ -87,6 +91,25 @@
 
 .account-select option {
     color: var(--bg);
+}
+
+.account-checkbox-container {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    /* background-color: aqua; */
+    margin-bottom: -1.6rem;
+}
+
+.account-checkbox {
+    width: 1.6rem;
+    height: 1.6rem;
+    cursor: pointer;
+}
+
+.account-checktext {
+    font-size: 1.8rem;
+    color: rgb(200, 200, 200);
 }
 
 .account-btn {

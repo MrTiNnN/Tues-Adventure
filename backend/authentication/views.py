@@ -39,6 +39,7 @@ def registration(request):
         classLetter = request.data['classLetter']
         password = request.data['password']
         confirmPassword = request.data['confirmPassword']
+        notifications = request.data['notifications']
     except:
         return Response('Моля попълнете всички полета.', status=400)
     
@@ -75,7 +76,8 @@ def registration(request):
             lastName = lastName,
             grade = classNumber,
             className = classLetter,
-            password = hashed_password
+            password = hashed_password,
+            notifications = notifications
         )
 
         user.save()

@@ -10,6 +10,7 @@ const Register = () => {
     const [lastName, setLastName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [notifications, setNotifications] = useState(false)
 
     const [error, setError] = useState(null)
 
@@ -25,7 +26,8 @@ const Register = () => {
             classNumber,
             classLetter,
             password,
-            confirmPassword
+            confirmPassword,
+            notifications
         }
 
         console.log(obj)
@@ -126,6 +128,16 @@ const Register = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
+
+                <label className="account-checkbox-container">
+                    <input
+                        className="account-checkbox"
+                        type="checkbox"
+                        checked={notifications}
+                        onChange={() => setNotifications(!notifications)}
+                    />
+                    <p className="account-checktext">Желая да бъда получавам известия на имейл за бъдещи екскурзии и преходи.</p>
+                </label>
 
                 <button type="submit" className="account-btn">Регистрация</button>
             </form>
