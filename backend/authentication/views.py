@@ -105,7 +105,7 @@ def verification(request):
         id = force_str(urlsafe_base64_decode(request.data['id']))
         user = User.objects.get(id=id)
     except:
-        return Response("Couldn't find the user you're trying to verify.", status=400)
+        return Response("Не открихме акаунта, който се опитвате да потвърдите.", status=400)
     
     try:
         token = request.data['token']
@@ -113,12 +113,12 @@ def verification(request):
             user.is_active = True
             user.save()
         else:
-            return Response('Please enter a valid token.', status=400)
+            return Response('Времето Ви за потвърждение е изтекло.', status=400)
     except:
         return Response("Couldn't verify user.", status=400)
 
 
-    return Response('Verification successfull! Now you can login to your account.', status=200)
+    return Response('Потвърждение успешно!.', status=200)
 
 
 
