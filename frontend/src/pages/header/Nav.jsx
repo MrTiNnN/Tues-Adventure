@@ -14,7 +14,7 @@ const Nav = () => {
 
     return (
         <header className="header">
-            <p className="nav-logo">LOGO</p>
+            <Link to='/' className="nav-logo" style={{ color: "white", textDecoration: "none" }}>LOGO</Link>
 
             {
                 acc ?

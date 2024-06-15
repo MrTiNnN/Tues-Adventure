@@ -1,4 +1,4 @@
-import wave from '../../img/wave.png'
+import wave from '../../img/wave1.png'
 
 const AccountSection = ({ children }) => {
     return (

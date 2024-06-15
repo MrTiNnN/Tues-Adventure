@@ -6,7 +6,8 @@
 :root {
   /* --main: #833312; */
 
-  --main-shade-8: #2b1d09;
+  /* ORANGE */
+  /* --main-shade-8: #2b1d09;
   --main-shade-7: #412b0d;
   --main-shade-6: #573a11;
   --main-shade-3: #98661e;
@@ -15,12 +16,90 @@
   --main-tint-2: #e1a755;
   --main-tint-3: #e4b26b;
   --main-tint-5: #ecc895;
-  --main-tint-7: #f4debf;
+  --main-tint-7: #f4debf; */
 
-  --bg: #13151c;
+  /* UBIT ORANGE */
+  /* --main-shade-8: #301f14;
+  --main-shade-7: #482f1f;
+  --main-shade-6: #603e29;
+  --main-shade-3: #a76d47;
+  --main-shade-1: #d78c5c;
+  --main: #ef9c66;
+  --main-tint-2: #f2b085;
+  --main-tint-3: #f4ba94;
+  --main-tint-5: #f7ceb3;
+  --main-tint-7: #fae1d1; */
+
+  /* PINKISH */
+  /* --main-shade-8: #331f1a;
+  --main-shade-7: #4c2e27;
+  --main-shade-6: #663e34;
+  --main-shade-3: #b36d5b;
+  --main-shade-1: #e68c75;
+  --main: #ff9b82;
+  --main-tint-2: #ffaf9b;
+  --main-tint-3: #ffb9a8;
+  --main-tint-5: #ffcdc1;
+  --main-tint-7: #ffe1da; */
+
+  /* PINKISH FROM THE IMAGE */
+  --main-shade-8: #291917;
+  --main-shade-7: #3d2622;
+  --main-shade-6: #52322e;
+  --main-shade-3: #8f5851;
+  --main-shade-1: #b87168;
+  --main: #cc7e73;
+  --main-tint-2: #d6988f;
+  --main-tint-3: #dba59d;
+  --main-tint-5: #e6bfb9;
+  --main-tint-7: #f0d8d5;
+
+  /* PINK */
+  /* --main-shade-8: #301926;
+  --main-shade-7: #492539;
+  --main-shade-6: #61314c;
+  --main-shade-3: #a95684;
+  --main-shade-1: #da6faa;
+  --main: #f27bbd;
+  --main-tint-2: #c26297;
+  --main-tint-3: #f6a3d1;
+  --main-tint-5: #f9bdde;
+  --main-tint-7: #fbd7eb; */
+
+  /* --bg: #13151c;
   --bg-tint-2: #424449;
   --bg-tint-4: #717377;
-  --bg-tint-6: #a1a1a4;
+  --bg-tint-6: #a1a1a4; */
+
+  --bg: #14243c;
+  --bg-tint-2: #435063;
+  --bg-tint-4: #727c8a;
+  --bg-tint-6: #a1a7b1;
+
+
+  /* GREEN 1 */
+  /* --main-shade-8: #03100a;
+  --main-shade-7: #04180f;
+  --main-shade-6: #062014;
+  --main-shade-3: #0b3923;
+  --main-shade-1: #0e492d;
+  --main: #0f5132;
+  --main-tint-2: #3f745b;
+  --main-tint-3: #578570;
+  --main-tint-5: #87a899;
+  --main-tint-7: #b7cbc2; */
+
+  /* GREEN 2 */
+  /* --main-shade-8: #11210a;
+  --main-shade-7: #19320e;
+  --main-shade-6: #224213;
+  --main-shade-3: #3b7422;
+  --main-shade-1: #4d952b;
+  --main: #55a630;
+  --main-tint-2: #77b859;
+  --main-tint-3: #88c16e;
+  --main-tint-5: #aad398;
+  --main-tint-7: #cce4c1; */
 
   /* --main: #e9b47c;
   --main-tint-5: #f4dabe; */
@@ -95,7 +174,7 @@ html {
 .btn,
 .btn:link,
 .btn:visited {
-  background-color: var(--main);
+  background-color: var(--main-tint-2);
   color: var(--main-shade-8);
   font-size: 1.6rem;
   font-family: inherit;
