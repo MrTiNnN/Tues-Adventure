@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import { DataContext } from "../../context/DataContext"
 import './account.css'
-import wave from '../../img/wave.png'
 import AccountSection from "./AccountSection"
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
 
     const [error, setError] = useState(null)
 
-    const { navigate, setAcc, crud } = useContext(DataContext)
+    const { navigate, setRefresh, access, setAccess, crud } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -29,8 +28,10 @@ const Login = () => {
         console.log(response)
 
         if(response.status == 200) {
-            setAcc(response.data.user.id)
-            localStorage.setItem('acc', response.data.user.id)
+            setRefresh(response.data.refresh)
+            setAccess(response.data.access)
+            localStorage.setItem('refresh', response.data.refresh)
+            localStorage.setItem('access', response.data.access)
             navigate('/')
         }
         else {

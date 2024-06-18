@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
 const Nav = () => {
-    const { acc, setAcc } = useContext(DataContext)
+    const { refresh, setRefresh, access, setAccess } = useContext(DataContext)
 
     const handleLogout = () => {
-        setAcc(null)
-        localStorage.removeItem('acc')
+        setRefresh(null)
+        setAccess(null)
+        localStorage.removeItem('refresh')
+        localStorage.removeItem('access')
     }
 
     return (
@@ -17,11 +19,10 @@ const Nav = () => {
             <Link to='/' className="nav-logo" style={{ color: "white", textDecoration: "none" }}>LOGO</Link>
 
             {
-                acc ?
+                refresh && access ?
                 <nav className='account-nav'>
                     <ul className='nav-links'>
                         <li><Link className='nav-link' onClick={handleLogout}>Log Out</Link></li>
-                        
                     </ul>
                 </nav>
                 :

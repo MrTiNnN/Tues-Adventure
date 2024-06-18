@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
@@ -22,6 +24,7 @@ def activateAccount(user, to_email):
 
 # Registering accounts
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def registration(request):
 
     # Checking for empty values
@@ -100,6 +103,7 @@ def registration(request):
 
 # Verifying account
 @api_view(['PATCH'])
+@permission_classes([AllowAny])
 def verification(request):
     try:
         id = force_str(urlsafe_base64_decode(request.data['id']))
@@ -126,6 +130,7 @@ def verification(request):
 
 # Logging in to an account
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def authentication(request):
 
     # Checking for empty values
@@ -150,9 +155,39 @@ def authentication(request):
 
         # Checking if the password is correct
         if check_password(password, user.password):
-            return Response({'data': 'Успешно влизане.', 'user': {'id': user.id}}, status=200)
+            token = RefreshToken.for_user(user)
+
+            return Response({
+                'data': 'Успешно влизане.',
+                'refresh': str(token),
+                'access': str(token.access_token)
+            }, status=200)
         else:
             return Response('Грешна парола.', status=400)
 
     except:
         return Response('Не съществува акаунт с този имейл.', status=404)
+    
+
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def fake_view(request):
+#     # authentication_classes = [IsAuthenticated]
+#     method = request.method
+#     url = request.build_absolute_uri()
+#     headers = dict(request.headers)
+#     body = request.body.decode('utf-8') if request.body else None
+    
+#     # Prepare a dictionary with request information
+#     request_info = {
+#         'method': method,
+#         'url': url,
+#         'headers': headers,
+#         'body': body,
+#     }
+    
+#     # Print or log the request information (optional)
+#     print(f"Request Format: {request_info}")
+    
+#     # Return the request information in the response
+#     return Response(request_info, status=200)

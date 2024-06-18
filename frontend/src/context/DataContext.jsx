@@ -7,7 +7,8 @@ export const DataContext = createContext({})
 const DataProvider = ({ children }) => {
     const navigate = useNavigate()
 
-    const [acc, setAcc] = useState(JSON.parse(localStorage.getItem('acc')) || null)
+    const [refresh, setRefresh] = useState(localStorage.getItem('refresh') || null)
+    const [access, setAccess] = useState(localStorage.getItem('access') || null)
 
     const [ctaEmail, setCtaEmail] = useState('')
 
@@ -18,7 +19,16 @@ const DataProvider = ({ children }) => {
     // Makes a CRUD operation to the backend server
     const crud = async ({ url, method, body = null, headers = null }) => {
         try {
-            const response = await axios[method](url, body, headers)
+            const config = {
+                headers: access ? {
+                    'Authorization': `Bearer ${access}`,
+                    ...headers
+                } : {
+                    headers
+                }
+            }
+
+            const response = await axios[method](url, body, config)
 
             if(response) return response
         } catch(err) {
@@ -31,7 +41,7 @@ const DataProvider = ({ children }) => {
             value={{
                 navigate,
                 ctaEmail, setCtaEmail,
-                acc, setAcc,
+                refresh, setRefresh, access, setAccess,
                 crud
             }}
         >
