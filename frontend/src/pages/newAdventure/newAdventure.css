@@ -1,0 +1,9 @@
+.section-new {
+    padding: 12.8rem 0;
+}
+
+.adventure-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}

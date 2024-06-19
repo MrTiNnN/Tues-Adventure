@@ -10,6 +10,7 @@ import img3 from './img/3.jpg'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Verification from './pages/account/Verification'
+import NewAdventure from './pages/newAdventure/NewAdventure'
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/activate/:id/:token' element={<Verification />} />
             <Route path='/login' element={<Login />} />
+
+            <Route path='/new' element={<NewAdventure />} />
           </Routes>
 
           {/* <img src={img1} alt="" />

@@ -17,27 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# Simple jwt views
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
-# class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     def get_token(cls, user):
-#         token = super().get_token(user)
-
-#         token['email'] = user.email
-#         token['firstName'] = user.firstName
-#         token['lastName'] = user.lastName
-#         token['grade'] = user.grade
-#         token['className'] = user.className
-#         token['is_active'] = user.is_active
-#         token['role'] = user.role
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('authentication/', include("authentication.urls")),
-    
-    # Simple jwt
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('adventure/', include("adventure.urls"))
 ]
