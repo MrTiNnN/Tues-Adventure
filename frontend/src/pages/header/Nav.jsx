@@ -22,6 +22,7 @@ const Nav = () => {
                 refresh && access ?
                 <nav className='account-nav'>
                     <ul className='nav-links'>
+                        <li><Link className='nav-link' to='/adventures'>Приключения</Link></li>
                         <li><Link className='nav-link' onClick={handleLogout}>Log Out</Link></li>
                     </ul>
                 </nav>
@@ -30,7 +31,6 @@ const Nav = () => {
                     <ul className='nav-links'>
                         <li><Link className='nav-link' to='/register'>Регистрация</Link></li>
                         <li><Link className='nav-link login' to='/login'>Вход</Link></li>
-                        <li><HashLink className='nav-link' to='#about-tues'>About tues</HashLink></li>
                     </ul>
                 </nav>
             }

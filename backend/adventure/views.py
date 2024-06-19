@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import AccessToken
 from datetime import datetime
+from django.core.mail import EmailMessage
 
 from authentication.models import User
 from .models import Adventure
@@ -29,6 +30,29 @@ def decode(request):
         return token
     except:
         raise ValueError
+    
+
+
+def notification(adventure):
+    try:
+        users = User.objects.filter(notifications=1)
+
+        mailSubject = "Пътешествие"
+        message = f'{adventure.description} \n\nАко имате желание да дойдете с нас, запишете се на сайта ни или се присъединете към нашия discord сървър! \nЗапишете се: http://localhost:5173/adventure/{adventure.id} \nDiscord: https://discord.gg/AnDXXsjX'
+
+        for user in users:
+            to_email = user.email
+            email = EmailMessage(mailSubject, message, to=[to_email])
+
+            email.send()
+    except:
+        raise ValueError
+    
+    # mail_subject = "TUES Adventure Verification"
+    # message = f'Please activate your account: http://localhost:5173/activate/{urlsafe_base64_encode(force_bytes(user.pk))}/{account_activation_token.make_token(user)}'
+    # email = EmailMessage(mail_subject, message, to=[to_email])
+
+    # email.send()
 
 
 
@@ -72,6 +96,11 @@ def creation(request):
                 )
 
                 adventure.save()
+
+                try:
+                    notification(adventure)
+                except:
+                    return Response("Error sending the notifying email.", status=400)
             except:
                 return Response("Error saving the adventure.", status=400)
 
