@@ -31,6 +31,7 @@ def decode(request):
         raise ValueError
 
 
+
 # Create your views here.
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -80,3 +81,32 @@ def creation(request):
 
 
     return Response('Adventure created successfully.', status=201)
+
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def adventure(request):
+    # Getting the id
+    id = request.GET.get('id', None)
+    if id == None:
+        return Response('Provide an id for the desired resource.', status=401)
+    
+
+    # Getting the adventure
+    try:
+        adventure = Adventure.objects.get(id=id)
+
+        name = adventure.name
+        description = adventure.description
+        date = adventure.date
+    except:
+        return Response("Couldn't find the adventure you're looking for.", status=401)
+
+    
+    return Response({
+        'name': name,
+        'description': description,
+        'date': date
+    }, status=200)

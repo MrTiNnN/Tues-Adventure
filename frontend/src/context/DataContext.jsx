@@ -28,7 +28,12 @@ const DataProvider = ({ children }) => {
                 }
             }
 
-            const response = await axios[method](url, body, config)
+            let response;
+            if (method.toLowerCase() === 'get' || method.toLowerCase() === 'delete') {
+                response = await axios[method](url, config);
+            } else {
+                response = await axios[method](url, body, config);
+            }
 
             if(response) return response
         } catch(err) {

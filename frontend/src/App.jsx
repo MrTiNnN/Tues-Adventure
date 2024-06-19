@@ -11,6 +11,7 @@ import img3 from './img/3.jpg'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Verification from './pages/account/Verification'
 import NewAdventure from './pages/newAdventure/NewAdventure'
+import Adventure from './pages/adventure/Adventure'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/login' element={<Login />} />
 
             <Route path='/new' element={<NewAdventure />} />
+            <Route path='/adventure/:id' element={<Adventure />} />
           </Routes>
 
           {/* <img src={img1} alt="" />
