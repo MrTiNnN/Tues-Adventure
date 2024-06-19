@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/DataContext"
 import AccountSection from "./AccountSection"
 
@@ -13,8 +13,13 @@ const Register = () => {
     const [notifications, setNotifications] = useState(false)
 
     const [error, setError] = useState(null)
+    const [message, setMessage] = useState(null)
 
-    const { navigate, crud } = useContext(DataContext)
+    const { navigate, crud, refresh, access } = useContext(DataContext)
+
+    useEffect(() => {
+        if(refresh && access) navigate('/adventures')
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -42,8 +47,10 @@ const Register = () => {
 
         if(response.status == 201) {
             setCtaEmail('')
-            
-            navigate('/login')
+
+            setError(null)
+
+            setMessage('Успешно се регистрирахте. Моля проверете имейла си и потвърдете акаунта.')
         }
         else {
             setError(response.response.data)
@@ -57,6 +64,10 @@ const Register = () => {
                 {
                     error &&
                     <p className="account-text error">{error}</p>
+                }
+                {
+                    message && !error &&
+                    <p className="account-text">{message}</p>
                 }
             </div>
 

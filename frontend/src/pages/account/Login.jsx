@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/DataContext"
 import './account.css'
 import AccountSection from "./AccountSection"
@@ -9,7 +9,11 @@ const Login = () => {
 
     const [error, setError] = useState(null)
 
-    const { navigate, setRefresh, access, setAccess, crud } = useContext(DataContext)
+    const { navigate, refresh, setRefresh, access, setAccess, crud } = useContext(DataContext)
+
+    useEffect(() => {
+        if(refresh && access) navigate('/adventures')
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
