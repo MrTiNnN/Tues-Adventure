@@ -101,6 +101,17 @@ def adventure(request):
         name = adventure.name
         description = adventure.description
         date = adventure.date
+
+        participantObjects = adventure.participants.all()
+        participants = []
+        for participant in participantObjects:
+            participants.append({
+                'email': participant.email,
+                'firstName': participant.firstName,
+                'lastName': participant.lastName,
+                'grade': f'{participant.grade}{participant.className}',
+            })
+
     except:
         return Response("Couldn't find the adventure you're looking for.", status=401)
 
@@ -108,7 +119,8 @@ def adventure(request):
     return Response({
         'name': name,
         'description': description,
-        'date': date
+        'date': date,
+        'participants': participants
     }, status=200)
 
 

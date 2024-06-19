@@ -58,6 +58,14 @@ const Adventure = () => {
                     <h1>{adventure.name}</h1>
                     <p>{adventure.description}</p>
                     <p>{adventure.date}</p>
+                    <p>Participants: </p>
+                    <ul>
+                        {
+                            adventure.participants.map((participant, i) => (
+                                <li key={i}>{participant.firstName} {participant.lastName} ({participant.grade})</li>
+                            ))
+                        }
+                    </ul>
                     <button className="btn" onClick={handleSigningUp}>Ще участвам</button>
                 </>
             }
