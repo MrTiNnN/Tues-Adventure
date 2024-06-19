@@ -13,7 +13,11 @@ const NewAdventure = () => {
     const [month, setMonth] = useState(new Date().getMonth())
     const [year, setYear] = useState(new Date().getFullYear())
 
-    const { crud } = useContext(DataContext)
+    const { crud, refresh, access, navigate } = useContext(DataContext)
+
+    useEffect(() => {
+        if(!refresh && !access) navigate('/login')
+    }, [])
 
     useEffect(() => {
         setDay(date.getDate())

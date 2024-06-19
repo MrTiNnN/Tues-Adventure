@@ -3,11 +3,15 @@ import { DataContext } from "../../context/DataContext"
 import './allAdventures.css'
 
 const AllAdventures = () => {
-    const { crud, navigate } = useContext(DataContext)
+    const { crud, navigate, refresh, access } = useContext(DataContext)
 
     const [adventures, setAdventures] = useState(null)
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        if(!refresh && !access) navigate('/login')
+    }, [])
 
     useEffect(() => {
         const fetching = async () => {

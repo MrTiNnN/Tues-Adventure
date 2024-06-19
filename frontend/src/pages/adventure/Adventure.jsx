@@ -6,11 +6,15 @@ import './adventure.css'
 const Adventure = () => {
     const id = useParams().id
 
-    const { crud } = useContext(DataContext)
+    const { crud, refresh, access, navigate } = useContext(DataContext)
 
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [adventure, setAdventure] = useState(null)
+
+    useEffect(() => {
+        if(!refresh && !access) navigate('/login')
+    }, [])
 
     useEffect(() => {
         const fetching = async () => {
@@ -49,7 +53,7 @@ const Adventure = () => {
 
             {
                 !loading && error &&
-                <p>{error}</p>
+                <p>{JSON.stringify(error)}</p>
             }
 
             {
