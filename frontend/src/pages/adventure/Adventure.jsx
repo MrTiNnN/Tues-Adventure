@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { DataContext } from "../../context/DataContext"
+import './adventure.css'
 
 const Adventure = () => {
     const id = useParams().id
@@ -30,8 +31,17 @@ const Adventure = () => {
         fetching()
     }, [id])
 
+    const handleSigningUp = async () => {
+        const response = await crud({
+            url: `adventure/signingUp/?id=${id}`,
+            method: 'patch'
+        })
+
+        console.log(response)
+    }
+
     return (
-        <section className="section">
+        <section className="section section-adventure">
             {
                 loading &&
                 <p>LOADING</p>
@@ -48,6 +58,7 @@ const Adventure = () => {
                     <h1>{adventure.name}</h1>
                     <p>{adventure.description}</p>
                     <p>{adventure.date}</p>
+                    <button className="btn" onClick={handleSigningUp}>Ще участвам</button>
                 </>
             }
         </section>

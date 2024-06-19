@@ -110,3 +110,52 @@ def adventure(request):
         'description': description,
         'date': date
     }, status=200)
+
+
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def signingUp(request):
+    # Getting the token
+    try:
+        token = decode(request)
+    except:
+        return Response("No valid authorization token provided.", status=401)
+    
+    id = token['user_id']
+
+
+    # Getting the adventure id from the query parameters
+    adventureId = request.GET.get('id', None)
+    if adventureId == None:
+        return Response('Provide an id for the desired resource.', status=401)
+    
+
+    # Getting the adventure object
+    try:
+        adventure = Adventure.objects.get(id=adventureId)
+    except:
+        return Response("Couldn't find the adventure you're looking for.", status=401)
+
+
+    # Getting the user object
+    try:
+        user = User.objects.get(id=id)
+    except:
+        return Response("Couldn't find the user you're trying to sign up.", status=401)
+    
+
+    # Checking if the user is already a participant
+    if adventure.participants.filter(id=id).exists():
+        return Response("User is already a participant.", status=401)
+    
+
+    # Adding the user as a participant
+    try:
+        adventure.participants.add(user)
+
+        adventure.save()
+    except:
+        return Response("Error saving the changes.", status=400)
+
+    return Response("Participant added successfully.", status=200)
