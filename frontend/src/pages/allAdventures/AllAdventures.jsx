@@ -45,17 +45,23 @@ const AllAdventures = () => {
 
             {
                 !loading && !error && adventures &&
-                <>
+                <div className="adventure-grid">
                     {
                         adventures.map(adventure => (
-                            <div key={adventure.id} onClick={() => navigate(`/adventure/${adventure.id}`)} className="adventure-container">
-                                <h1>{adventure.name}</h1>
-                                <p>{adventure.description}</p>
-                                <p>{adventure.date}</p>
+                            <div key={adventure.id} onClick={() => navigate(`/adventure/${adventure.id}`)} className="adventure-card">
+                                <h1 className="heading-adventure-card">{adventure.name}</h1>
+                                <p className="text-adventure-card">
+                                    {
+                                        adventure.description.length > 200 ?
+                                        `${adventure.description.slice(0, 200)}...` :
+                                        adventure.description
+                                    }
+                                </p>
+                                <p className="date-adventure-card">{adventure.date}</p>
                             </div>
                         ))
                     }
-                </>
+                </div>
             }
         </section>
     )

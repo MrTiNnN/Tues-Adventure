@@ -1,11 +1,54 @@
 .section-adventures {
     padding: 12.8rem 6.4rem;
-    color: white;
+    color: rgb(200, 200, 200);
 }
 
-.adventure-container {
+.adventure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6.4rem;
+}
+
+.adventure-card {
     box-shadow: 0 0 1.2rem rgb(0, 0, 0, 0.5);
     padding: 3.2rem;
     cursor: pointer;
     margin-bottom: 6.4rem;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: .2s;
+}
+
+.adventure-card:hover .heading-adventure-card {
+    color: var(--main);
+}
+
+.heading-adventure-card {
+    font-size: 3.2rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1.2rem;
+    transition: .2s;
+}
+
+.adventure-card:hover .date-adventure-card {
+    color: var(--main-tint-5);
+}
+
+.text-adventure-card {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+    transition: .2s;
+}
+
+.date-adventure-card {
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 0.4rem;
+    /* justify-self: end; */
+    margin-top: auto;
 }
