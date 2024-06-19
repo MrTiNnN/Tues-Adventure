@@ -31,3 +31,6 @@ On Linux and MacOS, we activate our virtual environment with the source command.
 1.  Navigate to the frontend folder by running `cd ../`, if your in the head backend folder and then `cd frontend`
 2.  Install the all frontend dependencies using npm: `npm install`.
 3.  Run the server: `npm run dev`.
+
+
+*Note: to access the add adventure form you have to be an admin (you account must have a role of '2').
