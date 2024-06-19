@@ -171,3 +171,26 @@ def signingUp(request):
         return Response("Error saving the changes.", status=400)
 
     return Response("Participant added successfully.", status=200)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def allAdventures(request):
+    # Getting the adventures
+    try:
+        adventureObjects = Adventure.objects.all()
+        adventures = []
+        for adventure in adventureObjects:
+            adventures.append({
+                'id': adventure.id,
+                'name': adventure.name,
+                'description': adventure.description,
+                'date': adventure.date
+            })
+    except:
+        return Response("Couldn't get the adventures from the database.", status=404)
+
+    return Response({
+        'adventures': adventures
+    }, status=200)

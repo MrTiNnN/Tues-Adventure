@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Verification from './pages/account/Verification'
 import NewAdventure from './pages/newAdventure/NewAdventure'
 import Adventure from './pages/adventure/Adventure'
+import AllAdventures from './pages/allAdventures/AllAdventures'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
             <Route path='/new' element={<NewAdventure />} />
             <Route path='/adventure/:id' element={<Adventure />} />
+            <Route path='/adventures' element={<AllAdventures />} />
           </Routes>
 
           {/* <img src={img1} alt="" />

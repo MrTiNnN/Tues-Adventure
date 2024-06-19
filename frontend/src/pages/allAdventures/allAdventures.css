@@ -1,0 +1,11 @@
+.section-adventures {
+    padding: 12.8rem 6.4rem;
+    color: white;
+}
+
+.adventure-container {
+    box-shadow: 0 0 1.2rem rgb(0, 0, 0, 0.5);
+    padding: 3.2rem;
+    cursor: pointer;
+    margin-bottom: 6.4rem;
+}
